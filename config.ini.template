@@ -1,0 +1,9 @@
+; config.ini
+[DYNDNS]
+USER=
+PASSWORD=
+
+[API]
+KEY=
+SECRET=
+CONSUMER_KEY=
