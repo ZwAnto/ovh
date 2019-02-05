@@ -18,14 +18,11 @@ import sys
 import os
 
 
-
 sys.stdout.write('Reading config.ini... ')
 sys.stdout.flush()
 config = configparser.ConfigParser()
 config.read(args.conf)
 print('\033[92mOK\033[0m')
-
-config.read('config.ini')
 
 
 # Instanciate an OVH Client.
@@ -42,7 +39,7 @@ client = ovh.Client(
 #ck.add_rule(method="GET",path= "/*")
 #ck.request()
 
-ext_ip = requests.get('https://api.myip.com')
+ext_ip = requests.get('https://api.ipify.org/?format=json')
 ext_ip = ext_ip.json()['ip']
 
 dyn_host_list = client.get('/domain/zone/zwanto.org/dynHost/record')
