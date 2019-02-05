@@ -2,6 +2,7 @@
 [DYNDNS]
 USER=
 PASSWORD=
+ZONE=
 
 [API]
 KEY=

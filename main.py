@@ -51,10 +51,10 @@ print('\033[92mOK\033[0m')
 ext_ip = requests.get('https://api.ipify.org/?format=json')
 ext_ip = ext_ip.json()['ip']
 
-dyn_host_list = client.get('/domain/zone/zwanto.org/dynHost/record')
+dyn_host_list = client.get('/domain/zone/' + config['DYDNS']['ZONE'] + '/dynHost/record')
 
 for record in dyn_host_list:
-    dyn_host = client.get('/domain/zone/zwanto.org/dynHost/record/' + str(record))
+    dyn_host = client.get('/domain/zone/' + config['DYDNS']['ZONE'] + '/dynHost/record/' + str(record))
     a = requests.get('http://www.ovh.com/nic/update?system=dyndns&hostname=' + dyn_host['subDomain'] + '.' + dyn_host['zone'] + '&myip=' + ext_ip,auth =(config['DYNDNS']['USER'],config['DYNDNS']['PASSWORD']))
     sys.stdout.write(dyn_host['subDomain'] + '.' + dyn_host['zone'] + ': ')
     print(a.content.decode('utf-8'))
